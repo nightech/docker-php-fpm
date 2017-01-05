@@ -43,11 +43,11 @@ ENV_EXT[EXT_ZIP]="docker-php-ext-zip"
 ENV_EXT_STATUS[EXT_ZIP]=${EXT_ZIP:-"off"}
 
 for KEY in "${!ENV_EXT[@]}"; do
-    if [ ${ENV_EXT_STATUS[$KEY]} == 'off' ] ; then
+    if [ ${ENV_EXT_STATUS[$KEY]} == 'on' ] ; then
         mv "/usr/local/etc/php/conf.d/"${ENV_EXT[$KEY]}".disabled" "/usr/local/etc/php/conf.d/"${ENV_EXT[$KEY]}".ini" 2> /dev/null || true
+        echo "Php Ext :" $KEY "enabled"
     else
         mv "/usr/local/etc/php/conf.d/"${ENV_EXT[$KEY]}".ini" "/usr/local/etc/php/conf.d/"${ENV_EXT[$KEY]}".disabled" 2> /dev/null || true
-        echo "Php Ext :" $KEY "enabled"
     fi
 done
 
@@ -55,9 +55,14 @@ done
 declare -A ENV_CONFIG=()
 
 # zzz-upload.ini
+ENV_CONFIG[PHP_EXT_OPCACHE_MEMORY]=${PHP_EXT_OPCACHE_MEMORY:-"128"}
+ENV_CONFIG[PHP_EXT_OPCACHE_VALIDATE_TIMESTAMPS]=${PHP_EXT_OPCACHE_VALIDATE_TIMESTAMPS:-"1"}
+
+# zzz-upload.ini
 ENV_CONFIG[PHP_POST_MAX_SIZE]=${PHP_POST_MAX_SIZE:-"64m"}
 ENV_CONFIG[PHP_UPLOAD_MAX_FILESIZE]=${PHP_UPLOAD_MAX_FILESIZE:-"64m"}
-# zzz-process.conf
+
+# zzz-process.ini
 ENV_CONFIG[FPM_PM]=${FPM_PM:-"dynamic"}
 ENV_CONFIG[FPM_PM_MAX_CHILDREN]=${FPM_PM_MAX_CHILDREN:-"5"}
 ENV_CONFIG[FPM_PM_START_SERVERS]=${FPM_PM_START_SERVERS:-"2"}
@@ -65,7 +70,8 @@ ENV_CONFIG[FPM_PM_MIN_SPARE_SERVERS]=${FPM_PM_MIN_SPARE_SERVERS:-"1"}
 ENV_CONFIG[FPM_PM_MAX_SPARE_SERVERS]=${FPM_PM_MAX_SPARE_SERVERS:-"3"}
 ENV_CONFIG[FPM_PM_PROCESS_IDLE_TIMEOUT]=${FPM_PM_PROCESS_IDLE_TIMEOUT:-"10s"}
 ENV_CONFIG[FPM_PM_MAX_REQUESTS]=${FPM_PM_MAX_REQUESTS:-"0"}
-# zzz-status.conf
+
+# zzz-status.ini
 ENV_CONFIG[FPM_STATUS_PATH]=${FPM_STATUS_PATH:-"/fpm-status"}
 ENV_CONFIG[FPM_PING_PATH]=${FPM_PING_PATH:-"/fpm-ping"}
 ENV_CONFIG[FPM_PING_RESPONSE]=${FPM_PING_RESPONSE:-"pong"}
