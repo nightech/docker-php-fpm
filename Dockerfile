@@ -75,6 +75,17 @@ RUN apt-get update -y && \
 `#====================================================` \
     docker-php-ext-install bcmath && \
 `#====================================================` \
+`# Mcrypt` \
+`#====================================================` \
+    apt-get install -y --no-install-recommends libmcrypt-dev && \
+    docker-php-ext-install mcrypt && \
+`#====================================================` \
+`# Imap` \
+`#====================================================` \
+    apt-get install -y --no-install-recommends libc-client-dev libkrb5-dev && \
+    docker-php-ext-configure imap --with-imap --with-imap-ssl --with-kerberos && \
+    docker-php-ext-install imap && \
+`#====================================================` \
 `# Blackfire` \
 `#====================================================` \
     curl -A "Docker" -o /tmp/blackfire-probe.tar.gz -D - -L -s https://blackfire.io/api/v1/releases/probe/php/linux/amd64/$PHP_VERSION && \

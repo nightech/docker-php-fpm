@@ -21,8 +21,14 @@ ENV_EXT_STATUS[EXT_GD]=${EXT_GD:-"off"}
 ENV_EXT[EXT_IMAGICK]="docker-php-ext-imagick"
 ENV_EXT_STATUS[EXT_IMAGICK]=${EXT_IMAGICK:-"off"}
 
+ENV_EXT[EXT_IMAP]="docker-php-ext-imap"
+ENV_EXT_STATUS[EXT_IMAP]=${EXT_IMAP:-"off"}
+
 ENV_EXT[EXT_INTL]="docker-php-ext-intl"
 ENV_EXT_STATUS[EXT_INTL]=${EXT_INTL:-"off"}
+
+ENV_EXT[EXT_MCRYPT]="docker-php-ext-mcrypt"
+ENV_EXT_STATUS[EXT_MCRYPT]=${EXT_MCRYPT:-"off"}
 
 ENV_EXT[EXT_OPCACHE]="docker-php-ext-opcache"
 ENV_EXT_STATUS[EXT_OPCACHE]=${EXT_OPCACHE:-"on"}
