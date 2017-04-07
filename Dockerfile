@@ -86,6 +86,12 @@ RUN apt-get update -y && \
     docker-php-ext-configure imap --with-imap --with-imap-ssl --with-kerberos && \
     docker-php-ext-install imap && \
 `#====================================================` \
+`# Yaml` \
+`#====================================================` \
+    apt-get install -y --no-install-recommends libyaml-dev && \
+    pecl install yaml-2.0.0 && \
+    docker-php-ext-enable yaml && \
+`#====================================================` \
 `# Blackfire` \
 `#====================================================` \
     curl -A "Docker" -o /tmp/blackfire-probe.tar.gz -D - -L -s https://blackfire.io/api/v1/releases/probe/php/linux/amd64/$PHP_VERSION && \

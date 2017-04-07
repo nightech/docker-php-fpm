@@ -4,7 +4,7 @@ Dockerfile for creating PHP image with necessary extensions and handy tools
 
 ## What's inside?
 
-* PHP 7.0 official Debian based image : [Read more](https://github.com/docker-library/php/blob/master/7.0/fpm/Dockerfile)
+* PHP 7.1 official Debian based image : [Read more](https://github.com/docker-library/php/blob/master/7.1/fpm/Dockerfile)
 * All locales generated & Locales set to utf8
 * Extensions: 
   * Apcu
@@ -18,6 +18,7 @@ Dockerfile for creating PHP image with necessary extensions and handy tools
   * Pdo Mysql 
   * Redis
   * Sockets
+  * Yaml
   * Zip 
 * Extensions can be enabled or disabled with environment variables
 * Composer
@@ -37,6 +38,7 @@ Dockerfile for creating PHP image with necessary extensions and handy tools
 * `EXT_MYSQL` : "off"
 * `EXT_REDIS` : "off"
 * `EXT_SOCKETS` : "off"
+* `EXT_YAML` : "off"
 * `EXT_ZIP` : "off"
 
 ## Environment Variables
