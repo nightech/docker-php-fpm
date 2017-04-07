@@ -45,13 +45,16 @@ ENV_EXT_STATUS[EXT_REDIS]=${EXT_REDIS:-"off"}
 ENV_EXT[EXT_SOCKETS]="docker-php-ext-sockets"
 ENV_EXT_STATUS[EXT_SOCKETS]=${EXT_SOCKETS:-"off"}
 
+ENV_EXT[EXT_YAML]="docker-php-ext-yaml"
+ENV_EXT_STATUS[EXT_YAML]=${EXT_YAML:-"off"}
+
 ENV_EXT[EXT_ZIP]="docker-php-ext-zip"
 ENV_EXT_STATUS[EXT_ZIP]=${EXT_ZIP:-"off"}
 
 for KEY in "${!ENV_EXT[@]}"; do
     if [ ${ENV_EXT_STATUS[$KEY]} == 'on' ] ; then
         mv "/usr/local/etc/php/conf.d/"${ENV_EXT[$KEY]}".disabled" "/usr/local/etc/php/conf.d/"${ENV_EXT[$KEY]}".ini" 2> /dev/null || true
-        echo "Php Ext :" $KEY "enabled"
+        # echo "Php Ext :" $KEY "enabled"
     else
         mv "/usr/local/etc/php/conf.d/"${ENV_EXT[$KEY]}".ini" "/usr/local/etc/php/conf.d/"${ENV_EXT[$KEY]}".disabled" 2> /dev/null || true
     fi
