@@ -42,10 +42,17 @@ Dockerfile for creating PHP image with necessary extensions and handy tools
 * `EXT_ZIP` : "off"
 
 ## Environment Variables
+
+### Php Options
 * `PHP_POST_MAX_SIZE` : "64m"
 * `PHP_UPLOAD_MAX_FILESIZE` : "64m"
+
+### Php Extensions
+* `PHP_EXT_BLACKFIRE_AGENT_SOCKET` : "tcp://blackfire:8707"
 * `PHP_EXT_OPCACHE_MEMORY` : "128"
 * `PHP_EXT_OPCACHE_VALIDATE_TIMESTAMPS` : "1"
+
+### PhpFpm Options
 * `FPM_PM` : "dynamic"
 * `FPM_PM_MAX_CHILDREN` : "5"
 * `FPM_PM_START_SERVERS` : "2"
