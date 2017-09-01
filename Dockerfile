@@ -58,7 +58,7 @@ RUN apt-get update -y && \
 `#====================================================` \
 `# Imagick` \
 `#====================================================` \
-    apt-get install -y --no-install-recommends libmagickwand-dev && \
+    apt-get install -y --no-install-recommends libmagickwand-dev webp && \
     pecl install imagick && \
     docker-php-ext-enable imagick && \
 `#====================================================` \
