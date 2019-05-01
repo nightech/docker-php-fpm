@@ -52,7 +52,7 @@ RUN apt-get update -y && \
 `#====================================================` \
 `# Gd` \
 `#====================================================` \
-    apt-get install -y --no-install-recommends libfreetype6-dev libjpeg62-turbo-dev libpng12-dev && \
+    apt-get install -y --no-install-recommends libfreetype6-dev libjpeg62-turbo-dev libpng-dev && \
     docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ && \
     docker-php-ext-install gd && \
 `#====================================================` \
